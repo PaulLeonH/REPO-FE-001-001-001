@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2F7B4CB-9203-4B58-AD8E-684BFB3EF46E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CNFacturacion</RootNamespace>
+    <AssemblyName>CNFacturacion</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>TemporaryFacturacion.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonDTO\Exchange\ConsultaTicketRequest.cs" />
+    <Compile Include="CommonDTO\Exchange\DocumentoResponse.cs" />
+    <Compile Include="CommonDTO\Exchange\EnviarDocumentoRequest.cs" />
+    <Compile Include="CommonDTO\Exchange\EnviarDocumentoResponse.cs" />
+    <Compile Include="CommonDTO\Exchange\EnviarResumenResponse.cs" />
+    <Compile Include="CommonDTO\Exchange\EnvioDocumentoComun.cs" />
+    <Compile Include="CommonDTO\Exchange\FirmadoRequest.cs" />
+    <Compile Include="CommonDTO\Exchange\FirmadoResponse.cs" />
+    <Compile Include="CommonDTO\Exchange\RespuestaComun.cs" />
+    <Compile Include="CommonDTO\Exchange\RespuestaComunConArchivo.cs" />
+    <Compile Include="Common\Constants\EspacioNombres.cs" />
+    <Compile Include="Common\Constants\Formatos.cs" />
+    <Compile Include="Common\IEstructuraXML.cs" />
+    <Compile Include="Connected Services\SUNATReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="GenXML\ConsultaTicket.cs" />
+    <Compile Include="GenXML\XMLBoleta.cs" />
+    <Compile Include="GenXML\XMLComprobanteDePercepcion.cs" />
+    <Compile Include="GenXML\XMLComprobanteDeRetencion.cs" />
+    <Compile Include="GenXML\XMLComunicacionDeBaja.cs" />
+    <Compile Include="GenXML\XMLNotaDeDebito.cs" />
+    <Compile Include="GenXML\XMLNotaDeCredito.cs" />
+    <Compile Include="GenXML\XMLResumenDiario.cs" />
+    <Compile Include="Services\DocumentoSunat.cs" />
+    <Compile Include="Services\IServicioSunat.cs" />
+    <Compile Include="Services\IServicioSunatDocumentos.cs" />
+    <Compile Include="Services\ParametrosConexion.cs" />
+    <Compile Include="Services\RespuestaAsincrono.cs" />
+    <Compile Include="Services\RespuestaSincrono.cs" />
+    <Compile Include="Services\ServicioSunatDocumentos.cs" />
+    <Compile Include="Signed\Certificador.cs" />
+    <Compile Include="Signed\ICertificador.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\AccountingSupplierParty.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\AgentParty.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\AllowanceCharge.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\AlternativeConditionPrice.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\BillingReference.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\CarrierParty.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\Country.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\DespatchLine.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\DespatchLineItem.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\DigitalSignatureAttachment.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\DiscrepancyResponse.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\ExchangeRate.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\ExternalReference.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\InvoiceDocumentReference.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\InvoiceLine.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\Item.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\LegalMonetaryTotal.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\OrderReference.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\Party.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\PartyIdentification.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\PartyLegalEntity.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\PartyName.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\Payment.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\PhysicalLocation.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\PostalAddress.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\Price.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\PricingReference.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\Shipment.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\ShipmentStage.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\SignatoryParty.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\SignatureCac.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\TaxCategory.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\TaxScheme.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\TaxSubtotal.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\TaxTotal.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\TransportEquipment.cs" />
+    <Compile Include="Structure\CommonAggregateComponents\TransportHandlingUnit.cs" />
+    <Compile Include="Structure\CommonBasicComponents\InvoicedQuantity.cs" />
+    <Compile Include="Structure\CommonBasicComponents\OrderTypeCode.cs" />
+    <Compile Include="Structure\CommonBasicComponents\PartyIdentificationID.cs" />
+    <Compile Include="Structure\CommonBasicComponents\PayableAmount.cs" />
+    <Compile Include="Structure\CommonExtensionComponents\ExtensionContent.cs" />
+    <Compile Include="Structure\CommonExtensionComponents\UBLExtension.cs" />
+    <Compile Include="Structure\CommonExtensionComponents\UBLExtensions.cs" />
+    <Compile Include="Structure\EstandarUBL\CreditNote.cs" />
+    <Compile Include="Structure\EstandarUBL\DebitNote.cs" />
+    <Compile Include="Structure\EstandarUBL\DespatchAdvice.cs" />
+    <Compile Include="Structure\EstandarUBL\Invoice.cs" />
+    <Compile Include="GenXML\XMLFactura.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structure\EstandarUBL\Perception.cs" />
+    <Compile Include="Structure\EstandarUBL\Retention.cs" />
+    <Compile Include="Structure\EstandarUBL\SummaryDocuments.cs" />
+    <Compile Include="Structure\EstandarUBL\VoidedDocuments.cs" />
+    <Compile Include="Signed\ISerializador.cs" />
+    <Compile Include="Signed\Serializador.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\AdditionalInformation.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\AdditionalMonetaryTotal.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\AdditionalProperty.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\BillingPayment.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\SunatCosts.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\SunatEmbededDespatchAdvice.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\SUNATPerceptionSummaryDocumentReference.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\SUNATRetentionDocumentReference.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\SUNATRetentionInformation.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\SunatRoadTransport.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\SunatTransaction.cs" />
+    <Compile Include="Structure\SunatAggregateComponents\VoidedDocumentsLine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\SUNATReference\billService.wsdl" />
+    <None Include="Connected Services\SUNATReference\billService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SUNATReference\billService1.wsdl" />
+    <None Include="Connected Services\SUNATReference\CNFacturacion.SUNATReference.getStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SUNATReference\CNFacturacion.SUNATReference.sendBillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SUNATReference\CNFacturacion.SUNATReference.sendPackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SUNATReference\CNFacturacion.SUNATReference.sendSummaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SUNATReference\CNFacturacion.SUNATReference.statusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="TemporaryFacturacion.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\SUNATReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SUNATReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SUNATReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SUNATReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CDFacturacion\CDFacturacion.csproj">
+      <Project>{7c1136db-ab8b-446a-9842-1528bf59f395}</Project>
+      <Name>CDFacturacion</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

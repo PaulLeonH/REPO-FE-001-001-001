@@ -1,0 +1,5 @@
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\bin\Release\CDFacturacion.dll
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\bin\Release\CDFacturacion.pdb
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Release\CDFacturacion.csproj.CoreCompileInputs.cache
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Release\CDFacturacion.dll
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Release\CDFacturacion.pdb

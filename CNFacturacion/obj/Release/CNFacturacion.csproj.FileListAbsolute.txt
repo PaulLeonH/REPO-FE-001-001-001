@@ -1,0 +1,12 @@
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\bin\Release\CNFacturacion.dll.config
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\bin\Release\CNFacturacion.dll
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\bin\Release\CNFacturacion.pdb
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\bin\Release\CDFacturacion.dll
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\bin\Release\Ionic.Zip.dll
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\bin\Release\Newtonsoft.Json.dll
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\bin\Release\CDFacturacion.pdb
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\bin\Release\Newtonsoft.Json.xml
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\obj\Release\CNFacturacion.csprojResolveAssemblyReference.cache
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\obj\Release\CNFacturacion.csproj.CoreCompileInputs.cache
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\obj\Release\CNFacturacion.dll
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CNFacturacion\obj\Release\CNFacturacion.pdb

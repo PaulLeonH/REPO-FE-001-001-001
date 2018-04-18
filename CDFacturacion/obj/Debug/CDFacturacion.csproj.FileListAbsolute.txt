@@ -1,0 +1,12 @@
+C:\Users\paull\source\repos\FacturacionSUNAT\CDFacturacion\bin\Debug\CDFacturacion.dll
+C:\Users\paull\source\repos\FacturacionSUNAT\CDFacturacion\bin\Debug\CDFacturacion.pdb
+C:\Users\paull\source\repos\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.csproj.CoreCompileInputs.cache
+C:\Users\paull\source\repos\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.dll
+C:\Users\paull\source\repos\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.pdb
+C:\Users\paull\source\repos\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.csprojResolveAssemblyReference.cache
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\bin\Debug\CDFacturacion.dll
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\bin\Debug\CDFacturacion.pdb
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.csproj.CoreCompileInputs.cache
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.dll
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.pdb
+C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.csprojResolveAssemblyReference.cache

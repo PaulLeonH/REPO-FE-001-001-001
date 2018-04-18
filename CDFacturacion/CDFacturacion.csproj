@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C1136DB-AB8B-446A-9842-1528BF59F395}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CDFacturacion</RootNamespace>
+    <AssemblyName>CDFacturacion</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Boleta\Boleta.cs" />
+    <Compile Include="Boleta\Cliente.cs" />
+    <Compile Include="Boleta\Detalles.cs" />
+    <Compile Include="Boleta\DocumentoAsociado.cs" />
+    <Compile Include="Boleta\DomicilioFiscal.cs" />
+    <Compile Include="Boleta\Emisor.cs" />
+    <Compile Include="Boleta\GuiaDeRemision.cs" />
+    <Compile Include="Boleta\ItemBoleta.cs" />
+    <Compile Include="Boleta\Leyenda.cs" />
+    <Compile Include="Boleta\MontosGlobales.cs" />
+    <Compile Include="Catalogos.cs" />
+    <Compile Include="ComprobanteDePercepcion\Cliente.cs" />
+    <Compile Include="ComprobanteDePercepcion\ComprobanteDePercepcion.cs" />
+    <Compile Include="ComprobanteDePercepcion\ComprobanteRelacionado.cs" />
+    <Compile Include="ComprobanteDePercepcion\Detalles.cs" />
+    <Compile Include="ComprobanteDePercepcion\DomicilioFiscal.cs" />
+    <Compile Include="ComprobanteDePercepcion\Emisor.cs" />
+    <Compile Include="ComprobanteDeRetencion\ComprobanteDeRetencion.cs" />
+    <Compile Include="ComprobanteDeRetencion\ComprobanteRelacionado.cs" />
+    <Compile Include="ComprobanteDeRetencion\Detalles.cs" />
+    <Compile Include="ComprobanteDeRetencion\DomicilioFiscal.cs" />
+    <Compile Include="ComprobanteDeRetencion\Emisor.cs" />
+    <Compile Include="ComprobanteDeRetencion\Proveedor.cs" />
+    <Compile Include="ComunicacionDeBaja\ComunicacionDeBaja.cs" />
+    <Compile Include="ComunicacionDeBaja\Detalles.cs" />
+    <Compile Include="ComunicacionDeBaja\DocumentoDeBaja.cs" />
+    <Compile Include="ComunicacionDeBaja\Emisor.cs" />
+    <Compile Include="Factura\Cliente.cs" />
+    <Compile Include="Factura\DetalleDetraccion.cs" />
+    <Compile Include="Factura\Detalles.cs" />
+    <Compile Include="Factura\Detraccion.cs" />
+    <Compile Include="Factura\DocumentoAsociado.cs" />
+    <Compile Include="Factura\DomicilioFiscal.cs" />
+    <Compile Include="Factura\Emisor.cs" />
+    <Compile Include="Factura\Factura.cs" />
+    <Compile Include="Factura\GuiaDeRemision.cs" />
+    <Compile Include="Factura\ItemFactura.cs" />
+    <Compile Include="Factura\Leyenda.cs" />
+    <Compile Include="Factura\MontosGlobales.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\BienATransportar.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\Conductor.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\DatosEnvio.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\Destinatario.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\Detalles.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\DocumentoRelacionado.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\Emisor.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\GuiaDadaDeBaja.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\GuiaDeRemisionRemitente.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\Proveedor.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\PuntoLlegada.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\PuntoPartida.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\Transportista.cs" />
+    <Compile Include="GuiaDeRemisionRemitente\Vehiculo.cs" />
+    <Compile Include="NotaDeCredito\Cliente.cs" />
+    <Compile Include="NotaDeCredito\Detalles.cs" />
+    <Compile Include="NotaDeCredito\DocumentoAsociado.cs" />
+    <Compile Include="NotaDeCredito\DomicilioFiscal.cs" />
+    <Compile Include="NotaDeCredito\Emisor.cs" />
+    <Compile Include="NotaDeCredito\GuiaDeRemision.cs" />
+    <Compile Include="NotaDeCredito\ItemNotaCredito.cs" />
+    <Compile Include="NotaDeCredito\MontosGlobales.cs" />
+    <Compile Include="NotaDeCredito\NotaDeCredito.cs" />
+    <Compile Include="NotaDeDebito\Cliente.cs" />
+    <Compile Include="NotaDeDebito\Detalles.cs" />
+    <Compile Include="NotaDeDebito\DocumentoAsociado.cs" />
+    <Compile Include="NotaDeDebito\DomicilioFiscal.cs" />
+    <Compile Include="NotaDeDebito\Emisor.cs" />
+    <Compile Include="NotaDeDebito\GuiaDeRemision.cs" />
+    <Compile Include="NotaDeDebito\ItemNotaDebito.cs" />
+    <Compile Include="NotaDeDebito\MontosGlobales.cs" />
+    <Compile Include="NotaDeDebito\NotaDeDebito.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResumenDiario\Detalles.cs" />
+    <Compile Include="ResumenDiario\Emisor.cs" />
+    <Compile Include="ResumenDiario\ItemResumenDiario.cs" />
+    <Compile Include="ResumenDiario\ResumenDiario.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
