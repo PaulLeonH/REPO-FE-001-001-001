@@ -8,7 +8,7 @@ namespace CDFacturacion.NotaDeCredito
 {
     public class ItemNotaCredito
     {
-        public Int32 ID { get; set; }
+        public Int16 ID { get; set; }
         public string CodigoProducto { get; set; }
         public string UnidadTipo { get; set; }
         public Int64 UnidadCantidad { get; set; }

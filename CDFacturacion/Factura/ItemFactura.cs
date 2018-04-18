@@ -8,7 +8,7 @@ namespace CDFacturacion.Factura
 {
     public class ItemFactura
     {
-        public Int32 ID { get; set; }
+        public Int16? ID { get; set; }
         public string CodigoProducto { get; set; }
         public string UnidadTipo { get; set; }
         public Int64 UnidadCantidad { get; set; }
@@ -19,9 +19,8 @@ namespace CDFacturacion.Factura
         public Decimal ItemMontoIGV { get; set; }
         public string SistemaISC { get; set; }
         public Decimal ItemMontoISC { get; set; }
-        public Decimal OperacionesNoOnerosasValUnitario { get; set; }
-        public bool ItemEsDescuento { get; set; }
-        public Decimal ItemDescuentos { get; set; }
+        public Decimal? OperacionesNoOnerosasValUnitario { get; set; }
+        public Decimal? ItemDescuentos { get; set; }
         public Decimal ItemValorVenta { get; set; }
     }
 }

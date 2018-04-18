@@ -8,7 +8,7 @@ namespace CNFacturacion.Structure.CommonAggregateComponents
     [Serializable]
     public class VoidedDocumentLine
     {
-        public int ID { get; set; }
+        public Int16 ID { get; set; }
 
         public InvoicedQuantity CreditedQuantity { get; set; }
 

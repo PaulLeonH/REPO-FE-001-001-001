@@ -9,7 +9,7 @@ using System.Web.Http;
 using System.Threading.Tasks;
 using CNFacturacion.CommonDTO.Exchange;
 using APIFacturacion.Util.GenerarPDF;
-using APIFacturacion.Util.Validation.Factura;
+using APIFacturacion.Util.Validation;
 using APIFacturacion.Util.Validation.Shared;
 
 namespace APIFacturacion.Controllers

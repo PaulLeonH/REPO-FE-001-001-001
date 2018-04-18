@@ -18,6 +18,7 @@ using Newtonsoft.Json;
 using CNFacturacion.Structure.CommonExtensionComponents;
 using System.Reflection;
 using System.Web;
+using System.Globalization;
 
 namespace CNFacturacion.GenXML
 {
@@ -125,7 +126,7 @@ namespace CNFacturacion.GenXML
             invoice.ID = detalles.DocumentoNumero;
             invoice.InvoiceTypeCode = Catalogos.Catalogo01.TipoDeDocumento.FirstOrDefault(x => x.Value == "Factura").Key;
             invoice.DocumentCurrencyCode = detalles.Moneda;
-            invoice.IssueDate = detalles.FechaEmision;
+            invoice.IssueDate = DateTime.ParseExact(detalles.FechaEmision, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             #region Firma
             SignatureCac signature = new SignatureCac();
@@ -158,7 +159,7 @@ namespace CNFacturacion.GenXML
             invoice.AccountingCustomerParty.AdditionalAccountId = cliente.DocumentoTipo;
 
             Party partyCliente = new Party();
-            partyCliente.PartyLegalEntity.RegistrationName = cliente.Nom_RazonSoc;
+            partyCliente.PartyLegalEntity.RegistrationName = cliente.NomRazonSoc;
             invoice.AccountingCustomerParty.Party = partyCliente;
             #endregion
 
@@ -166,7 +167,7 @@ namespace CNFacturacion.GenXML
             foreach (ItemFactura item in listaItems)
             {
                 VoidedDocumentLine invoiceLine = new VoidedDocumentLine();
-                invoiceLine.ID = item.ID;
+                invoiceLine.ID = (Int16)item.ID;
                 invoiceLine.Item.SellersItemIdentification.ID = item.CodigoProducto;
 
                 // Cantidad/Descripcion
@@ -212,14 +213,14 @@ namespace CNFacturacion.GenXML
                 // Valor Referencial Unitario por Item en Operaciones No Onerosas
                 AlternativeConditionPrice ACPONOValorReferencial = new AlternativeConditionPrice();
                 ACPONOValorReferencial.PriceAmount.CurrencyID = detalles.Moneda;
-                ACPONOValorReferencial.PriceAmount.Value = item.OperacionesNoOnerosasValUnitario;
+                ACPONOValorReferencial.PriceAmount.Value = (decimal)item.OperacionesNoOnerosasValUnitario;
                 ACPONOValorReferencial.PriceTypeCode = "02";
                 invoiceLine.PricingReference.AlternativeConditionPrices.Add(ACPONOValorReferencial);
 
                 // Descuento por Item
-                invoiceLine.AllowanceCharge.ChargeIndicator = item.ItemEsDescuento;
+                invoiceLine.AllowanceCharge.ChargeIndicator = false;
                 invoiceLine.AllowanceCharge.Amount.CurrencyID = detalles.Moneda;
-                invoiceLine.AllowanceCharge.Amount.Value = item.ItemDescuentos;
+                invoiceLine.AllowanceCharge.Amount.Value = (decimal)item.ItemDescuentos;
 
                 // Valor Venta de Item
                 invoiceLine.LineExtensionAmount.CurrencyID = detalles.Moneda;
@@ -263,9 +264,9 @@ namespace CNFacturacion.GenXML
                 #region SumatoriaIGV
                 TaxTotal TaxSumaIGV = new TaxTotal();
                 TaxSumaIGV.TaxAmount.CurrencyID = detalles.Moneda;
-                TaxSumaIGV.TaxAmount.Value = montosGlobales.SumatoriaIGV;
+                TaxSumaIGV.TaxAmount.Value = (decimal)montosGlobales.SumatoriaIGV;
                 TaxSumaIGV.TaxSubtotal.TaxAmount.CurrencyID = detalles.Moneda;
-                TaxSumaIGV.TaxSubtotal.TaxAmount.Value = montosGlobales.SumatoriaIGV;
+                TaxSumaIGV.TaxSubtotal.TaxAmount.Value = (decimal)montosGlobales.SumatoriaIGV;
                 TaxSumaIGV.TaxSubtotal.TaxCategory.TaxScheme.ID = "1000";
                 TaxSumaIGV.TaxSubtotal.TaxCategory.TaxScheme.Name = "IGV";
                 TaxSumaIGV.TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode = "VAT";
@@ -274,9 +275,9 @@ namespace CNFacturacion.GenXML
                 #region SumatoriaISC
                 TaxTotal TaxSumaISC = new TaxTotal();
                 TaxSumaISC.TaxAmount.CurrencyID = detalles.Moneda;
-                TaxSumaISC.TaxAmount.Value = montosGlobales.SumatoriaISC;
+                TaxSumaISC.TaxAmount.Value = (decimal)montosGlobales.SumatoriaISC;
                 TaxSumaISC.TaxSubtotal.TaxAmount.CurrencyID = detalles.Moneda;
-                TaxSumaISC.TaxSubtotal.TaxAmount.Value = montosGlobales.SumatoriaISC;
+                TaxSumaISC.TaxSubtotal.TaxAmount.Value = (decimal)montosGlobales.SumatoriaISC;
                 TaxSumaISC.TaxSubtotal.TaxCategory.TaxScheme.ID = "2000";
                 TaxSumaISC.TaxSubtotal.TaxCategory.TaxScheme.Name = "ISC";
                 TaxSumaISC.TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode = "EXC";
@@ -285,9 +286,9 @@ namespace CNFacturacion.GenXML
                 #region SumatoriaOtrosTributos
                 TaxTotal TaxSumaOtrosTributos = new TaxTotal();
                 TaxSumaOtrosTributos.TaxAmount.CurrencyID = detalles.Moneda;
-                TaxSumaOtrosTributos.TaxAmount.Value = montosGlobales.SumatoriaOtrosTributos;
+                TaxSumaOtrosTributos.TaxAmount.Value = (decimal)montosGlobales.SumatoriaOtrosTributos;
                 TaxSumaOtrosTributos.TaxSubtotal.TaxAmount.CurrencyID = detalles.Moneda;
-                TaxSumaOtrosTributos.TaxSubtotal.TaxAmount.Value = montosGlobales.SumatoriaOtrosTributos;
+                TaxSumaOtrosTributos.TaxSubtotal.TaxAmount.Value = (decimal)montosGlobales.SumatoriaOtrosTributos;
                 TaxSumaOtrosTributos.TaxSubtotal.TaxCategory.TaxScheme.ID = "9999";
                 TaxSumaOtrosTributos.TaxSubtotal.TaxCategory.TaxScheme.Name = "OTROS";
                 TaxSumaOtrosTributos.TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode = "OTH";
@@ -295,7 +296,7 @@ namespace CNFacturacion.GenXML
             #endregion
                 #region SumatoriaOtrosCargos
                 invoice.LegalMonetaryTotal.ChargeTotalAmount.CurrencyID = detalles.Moneda;
-                invoice.LegalMonetaryTotal.ChargeTotalAmount.Value = montosGlobales.SumatorioOtrosCargos;
+                invoice.LegalMonetaryTotal.ChargeTotalAmount.Value = (decimal)montosGlobales.SumatoriaOtrosCargos;
             #endregion
 
             #endregion
@@ -304,7 +305,7 @@ namespace CNFacturacion.GenXML
             AdditionalMonetaryTotal AMTTotalDescuentos = new AdditionalMonetaryTotal();
             AMTTotalDescuentos.ID = "2005";
             AMTTotalDescuentos.PayableAmount.CurrencyID = detalles.Moneda;
-            AMTTotalDescuentos.PayableAmount.Value = montosGlobales.TotalDescuentos;
+            AMTTotalDescuentos.PayableAmount.Value = (decimal)montosGlobales.TotalDescuentos;
             ublExtension.ExtensionContent.AdditionalInformation.AdditionalMonetaryTotals.Add(AMTTotalDescuentos);
 
             // ImporteTotalVenta
@@ -315,11 +316,11 @@ namespace CNFacturacion.GenXML
             AdditionalMonetaryTotal AMTPercepcion = new AdditionalMonetaryTotal();
             AMTPercepcion.ID = "2001";
             AMTPercepcion.ReferenceAmount.CurrencyID = detalles.Moneda;
-            AMTPercepcion.ReferenceAmount.Value = montosGlobales.PercepcionBaseImponible;
+            AMTPercepcion.ReferenceAmount.Value = (decimal)montosGlobales.PercepcionBaseImponible;
             AMTPercepcion.PayableAmount.CurrencyID = detalles.Moneda;
-            AMTPercepcion.PayableAmount.Value = montosGlobales.PercepcionMonto;
+            AMTPercepcion.PayableAmount.Value = (decimal)montosGlobales.PercepcionMonto;
             AMTPercepcion.TotalAmount.CurrencyID = detalles.Moneda;
-            AMTPercepcion.TotalAmount.Value = montosGlobales.PercepcionMontoTotal;
+            AMTPercepcion.TotalAmount.Value = (decimal)montosGlobales.PercepcionMontoTotal;
             
             #endregion
 
@@ -361,7 +362,7 @@ namespace CNFacturacion.GenXML
             AdditionalMonetaryTotal AMTOperacionesGratuitas = new AdditionalMonetaryTotal();
             AMTOperacionesGratuitas.ID = "1004";
             AMTOperacionesGratuitas.PayableAmount.CurrencyID = detalles.Moneda;
-            AMTOperacionesGratuitas.PayableAmount.Value = montosGlobales.TVVOperacionesGratuitas;
+            AMTOperacionesGratuitas.PayableAmount.Value = (decimal)montosGlobales.TVVOperacionesGratuitas;
             additionalInformation.AdditionalMonetaryTotals.Add(AMTOperacionesGratuitas);
 
             ublExtension.ExtensionContent.AdditionalInformation = additionalInformation;
@@ -370,7 +371,7 @@ namespace CNFacturacion.GenXML
 
             // Descuentos Globales
             invoice.LegalMonetaryTotal.AllowanceTotalAmount.CurrencyID = detalles.Moneda;
-            invoice.LegalMonetaryTotal.AllowanceTotalAmount.Value = montosGlobales.DescuentosGlobales;
+            invoice.LegalMonetaryTotal.AllowanceTotalAmount.Value = (decimal)montosGlobales.DescuentosGlobales;
 
             return invoice;
         }

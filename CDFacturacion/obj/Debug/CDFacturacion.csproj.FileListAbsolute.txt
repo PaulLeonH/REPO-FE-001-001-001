@@ -10,3 +10,8 @@ C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion
 C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.dll
 C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.pdb
 C:\Users\Diego-pc\Desktop\FacturacionSUNAT\CDFacturacion\obj\Debug\CDFacturacion.csprojResolveAssemblyReference.cache
+C:\Users\Diego-pc\Desktop\REPO-FE-001-001-001\CDFacturacion\bin\Debug\CDFacturacion.dll
+C:\Users\Diego-pc\Desktop\REPO-FE-001-001-001\CDFacturacion\bin\Debug\CDFacturacion.pdb
+C:\Users\Diego-pc\Desktop\REPO-FE-001-001-001\CDFacturacion\obj\Debug\CDFacturacion.csproj.CoreCompileInputs.cache
+C:\Users\Diego-pc\Desktop\REPO-FE-001-001-001\CDFacturacion\obj\Debug\CDFacturacion.dll
+C:\Users\Diego-pc\Desktop\REPO-FE-001-001-001\CDFacturacion\obj\Debug\CDFacturacion.pdb

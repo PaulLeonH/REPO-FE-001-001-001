@@ -256,7 +256,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\GenerarPDF\G_Factura.cs" />
     <Compile Include="Util\GenerarPDF\Blob.cs" />
-    <Compile Include="Util\Validation\Factura\CheckFactura.cs" />
+    <Compile Include="Util\Validation\CheckFactura.cs" />
     <Compile Include="Util\Validation\Shared\CustomInvalidDataException.cs" />
     <Compile Include="Util\Validation\Shared\FieldsValidators.cs" />
   </ItemGroup>

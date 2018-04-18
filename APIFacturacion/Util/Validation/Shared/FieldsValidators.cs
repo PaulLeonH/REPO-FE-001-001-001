@@ -1,9 +1,6 @@
 ﻿using APIFacturacion.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace APIFacturacion.Util.Validation.Shared
 {
@@ -296,6 +293,8 @@ namespace APIFacturacion.Util.Validation.Shared
             return true;
         }
 
+        #region   -- Items -- 
+
         public static bool ValidateItemUnidadMedida(String Trigger, String UnidadMedida, out String ResponseMessage)
         {
             String Field = $"Unidad de Medida({Trigger})";
@@ -379,7 +378,7 @@ namespace APIFacturacion.Util.Validation.Shared
         {
             String Field = $"Valor Unitario ({Trigger})";
             ResponseMessage = "";
-            
+
             if (ValorUnitario == null)
             {
                 ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, Field);
@@ -396,7 +395,7 @@ namespace APIFacturacion.Util.Validation.Shared
         {
             String Field = $"Precio Venta ({Trigger})";
             ResponseMessage = "";
-            
+
             if (PrecioVenta == null)
             {
                 ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, Field);
@@ -408,7 +407,7 @@ namespace APIFacturacion.Util.Validation.Shared
 
             return true;
         }
-       
+
         public static bool ValidateItemIGV(String Trigger, String Afectacion, decimal? Monto, out String ResponseMessage)
         {
             ResponseMessage = "";
@@ -499,7 +498,7 @@ namespace APIFacturacion.Util.Validation.Shared
         {
             String Field = $"Codigo Producto {Trigger}";
             ResponseMessage = "";
-            
+
             if (Codigo.Length > ConstantData.Validation.MaxLength.CodigoItem)
             {
                 ResponseMessage = String.Format(ConstantData.Validation.Messages.MaxLength, Field, ConstantData.Validation.MaxLength.CodigoItem);
@@ -509,27 +508,9 @@ namespace APIFacturacion.Util.Validation.Shared
             return true;
         }
 
-        public static bool ValidateItemOpeNoOnerosas(String Trigger, String Codigo, decimal? Monto, out String ResponseMessage)
+        public static bool ValidateItemOpeNoOnerosas(String Trigger, decimal? Monto, out String ResponseMessage)
         {
             ResponseMessage = "";
-
-            if (String.IsNullOrEmpty(Codigo))
-            {
-                ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, $"Codigo Operaciones No Onorosas({Trigger})");
-                return false;
-            }
-
-            if (Codigo.Length != ConstantData.Validation.ExactLength.SistemaISC)
-            {
-                ResponseMessage = String.Format(ConstantData.Validation.Messages.ExactLength, $"Codigo Operaciones No Onorosas({Trigger})", ConstantData.Validation.ExactLength.SistemaISC);
-                return false;
-            }
-
-            if (!Catalogos.Catalogo16.ContainsKey(Codigo))
-            {
-                ResponseMessage = String.Format(ConstantData.Validation.Messages.AllowedCatalogValues, $"Codigo Operaciones No Onorosas({Trigger})", "Catálogo 16");
-                return false;
-            }
 
             if (Monto == null)
             {
@@ -542,6 +523,223 @@ namespace APIFacturacion.Util.Validation.Shared
 
             return true;
         }
+
+        public static bool ValidateItemDescuento(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Descuento ({Trigger})";
+            ResponseMessage = "";
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        #endregion
+
+        #region  -- Montos Globales -- 
+
+        public static bool ValidateMGOpeGravadas(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Total Operaciones Gravadas({Trigger})";
+            ResponseMessage = "";
+            
+            if (Monto == null)
+            {
+                ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, Field);
+                return false;
+            }
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGOpeInafectas(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Total Operaciones Inafectas({Trigger})";
+            ResponseMessage = "";
+            
+            if (Monto == null)
+            {
+                ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, Field);
+                return false;
+            }
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGOpeExoneradas(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Total Operaciones Exoneradas({Trigger})";
+            ResponseMessage = "";
+            
+            if (Monto == null)
+            {
+                ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, Field);
+                return false;
+            }
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGOpeGratuitas(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Total Operaciones Gratuitas({Trigger})";
+            ResponseMessage = "";
+            
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGSumaIGV(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Total Sumatoria IGV({Trigger})";
+            ResponseMessage = "";
+            
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGSumaISC(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Total Sumatoria ISC({Trigger})";
+            ResponseMessage = "";
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGSumaOtrosTributos(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Total Sumatoria Otros Tributos({Trigger})";
+            ResponseMessage = "";
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGSumaOtrosCargos(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Total Sumatoria Otros Cargos({Trigger})";
+            ResponseMessage = "";
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGImporteTotalVenta(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Importe Total Venta ({Trigger})";
+            ResponseMessage = "";
+
+            if (Monto == null)
+            {
+                ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, Field);
+                return false;
+            }
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGImportePercepcion(String Trigger, decimal? BaseImponible, decimal? Monto, decimal? MontoTotal, out String ResponseMessage)
+        {
+            ResponseMessage = "";
+
+            if (BaseImponible == null)
+            {
+                ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, $"Monto Base Imponible Percepcion({Trigger})");
+                return false;
+            }
+
+            if (!DataTypesValidators.ValidateDecimal($"Monto Base Imponible Percepcion({Trigger})", BaseImponible, out ResponseMessage))
+                return false;
+
+
+            if (Monto == null)
+            {
+                ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, $"Monto Percepcion({Trigger})");
+                return false;
+            }
+
+            if (!DataTypesValidators.ValidateDecimal($"Monto Percepcion({Trigger})", Monto, out ResponseMessage))
+                return false;
+
+
+            if (MontoTotal == null)
+            {
+                ResponseMessage = String.Format(ConstantData.Validation.Messages.Required, $"Monto Total Percepcion({Trigger})");
+                return false;
+            }
+
+            if (!DataTypesValidators.ValidateDecimal($"Monto Total Percepcion({Trigger})", MontoTotal, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+        
+        public static bool ValidateMGTotalDescuentosGlobales(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Total Descuentos Globales({Trigger})";
+            ResponseMessage = "";
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        public static bool ValidateMGImporteTotalDescuentos(String Trigger, decimal? Monto, out String ResponseMessage)
+        {
+            String Field = $"Importe Total Descuentos ({Trigger})";
+            ResponseMessage = "";
+
+            if (!DataTypesValidators.ValidateDecimal(Field, Monto, out ResponseMessage))
+                return false;
+
+            return true;
+        }
+
+        #endregion
+        
+        #region -- Referral Guide --
+
+        public static bool ValidateReferralGuide(String trigger, String guideType, String guideIdentifier, out String responseMessage)
+        {
+            responseMessage = "";
+            if (!Catalogos.Catalogo01.ContainsKey(guideType))
+            {
+                responseMessage = String.Format(ConstantData.Validation.Messages.AllowedCatalogValues, $"Tipo ({trigger})", "Catálogo 01");
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
+
+
+
     }
 
     public class DataTypesValidators

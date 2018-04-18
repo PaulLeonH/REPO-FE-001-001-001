@@ -83,7 +83,7 @@ namespace APIFacturacion.Util.GenerarPDF
                 para1.Add(Chunk.NEWLINE);
                 para1.Add(new Chunk($"RUC : {factura.Cliente.DocumentoNumero}", estandarNegro));
                 para1.Add(Chunk.NEWLINE);
-                para1.Add(new Chunk($"{factura.Cliente.Nom_RazonSoc}", estandarNegro));
+                para1.Add(new Chunk($"{factura.Cliente.NomRazonSoc}", estandarNegro));
                 para1.Add(Chunk.NEWLINE);
                 para1.Add(new Chunk($"{domFiscCliente.Direccion} - {domFiscCliente.Distrito} - {domFiscCliente.Provincia} - {domFiscCliente.Departamento}", estandarNegro));
 
@@ -103,7 +103,7 @@ namespace APIFacturacion.Util.GenerarPDF
                 Paragraph para2 = new Paragraph();
                 para2.Leading = 11;
                 para2.Add(new Chunk("FECHA EMISIÓN : ", negritaNegro));
-                para2.Add(new Chunk($"{factura.Detalles.FechaEmision.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)}", estandarNegro));
+                para2.Add(new Chunk(factura.Detalles.FechaEmision, estandarNegro));
                 para2.Add(Chunk.NEWLINE);
                 //para2.Add(new Chunk("FECHA DE VENC. : ", negritaNegro));
                 //para2.Add(new Chunk("23/02/2018", estandarNegro));
@@ -168,7 +168,7 @@ namespace APIFacturacion.Util.GenerarPDF
 
                 string[] titulos = new string[] { "CANT", "UM", "COD", "DESC", "P/U", "IMPORTE" };
                 string[] montosDesc = new string[] { "ANTICIPO (-)", "GRAVADA", "IGV", "TOTAL" };
-                decimal[] montosVal = new decimal[] { 0.00M, factura.Detalles.MontosGlobales.TVVOperacionesGravadas, factura.Detalles.MontosGlobales.SumatoriaIGV, factura.Detalles.MontosGlobales.ImporteTotalVenta };
+                decimal[] montosVal = new decimal[] { 0.00M, factura.Detalles.MontosGlobales.TVVOperacionesGravadas, (decimal)factura.Detalles.MontosGlobales.SumatoriaIGV, factura.Detalles.MontosGlobales.ImporteTotalVenta };
 
                 for (int i = 0; i < titulos.Length; i++)
                 {
